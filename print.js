@@ -2,8 +2,6 @@ var FargoOutlinePrint = {
 	html: {},
 	css: {},
 	parse: function(html) {
-		// stop the stuff from being editable
-		html = html.replace('contenteditable="true"','');
 
 		return html;
 	},
