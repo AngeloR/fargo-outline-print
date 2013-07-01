@@ -9,7 +9,7 @@ var FargoOutlinePrint = {
 		// create a new window and laod the text
 		FargoOutlinePrint.window = window.open('http://example.com', '_blank', 'width=500,height=400,resizable=1');
 		FargoOutlinePrint.window.document.write(selectedNode.html());
-	}
+	},
 	init: function() {
 		// load any html views
 		// laod the css
