@@ -1,9 +1,22 @@
 var FargoOutlinePrint = {
 	html: {},
-	css: {},
+	css: {
+		'ol': [
+			'list-style: none'
+		]
+	},
 	parse: function(html) {
 
 		return html;
+	},
+	css: function() {
+		var s = '<style>';
+		var keys = Object.keys(FargoOutlinePrint.css);
+		for(var i = 0, l = keys.length; i < l; ++i) {
+			s += keys[i] +' {' + FargoOutlinePrint[keys[i]].join(';') + '}';
+		}
+		s += '</style>';
+		return s;
 	},
 	print: function() {
 		// get the selected node
@@ -14,7 +27,7 @@ var FargoOutlinePrint = {
 
 		// create a new window and laod the text
 		FargoOutlinePrint.window = window.open('http://example.com', '_blank', 'width=500,height=400,resizable=1');
-		FargoOutlinePrint.window.document.write(selectedNode.html());
+		FargoOutlinePrint.window.document.write(FargoOutPrint.css() + selectedNode.html());
 	},
 	init: function() {
 		// load any html views
