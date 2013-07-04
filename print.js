@@ -27,7 +27,7 @@ var FargoOutlinePrint = {
 
 		// create a new window and laod the text
 		FargoOutlinePrint.window = window.open('http://example.com', '_blank', 'width=500,height=400,resizable=1');
-		FargoOutlinePrint.window.document.write(FargoOutPrint.css() + selectedNode.html());
+		FargoOutlinePrint.window.document.write(FargoOutlinePrint.css() + selectedNode.html());
 	},
 	init: function() {
 		// load any html views
