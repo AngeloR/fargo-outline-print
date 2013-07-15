@@ -29,6 +29,7 @@ var FargoOutlinePrint = {
 		FargoOutlinePrint.window = window.open('http://example.com', '_blank', 'width=500,height=400,resizable=1');
 		var html = '<html><head><style>' + FargoOutlinePrint.css() + '</style></head>';
 		html += '<body>' + selectedNode.html() + '</body></html>'; 
+		FargoOutlinePrint.window.document.title = tab.title;
 		FargoOutlinePrint.window.document.write(html);
 	},
 	init: function() {
