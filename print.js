@@ -51,6 +51,8 @@ var FargoOutlinePrint = {
 			FargoOutlinePrint.print();
 		});
 
+		console.log(appPrefs);
+
 		// load preset css info
 		FargoOutlinePrint.css.body = [
 			'font-family: ' + appPrefs.outlineFont,
