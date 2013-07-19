@@ -51,14 +51,14 @@ var FargoOutlinePrint = {
 			FargoOutlinePrint.print();
 		});
 
-		console.log(appPrefs);
-
 		// load preset css info
 		FargoOutlinePrint.css.body = [
 			'font-family: ' + appPrefs.outlineFont,
 			'font-size: ' + appPrefs.outlineFontSize + 'px',
-			'line-height: ' + appPRefs.outlineLineHeight + 'px'
+			'line-height: ' + appPrefs.outlineLineHeight + 'px'
 		];
+
+		console.log(FargoOutlinePrint.css);
 	}
 };
 
