@@ -9,11 +9,11 @@ var FargoOutlinePrint = {
 
 		return html;
 	},
-	css: function() {
-		var s = '<style>';
-		var keys = Object.keys(FargoOutlinePrint.css);
+	generateCSS: function() {
+		var s = '<style>',
+			keys = Object.keys(FargoOutlinePrint.css);
 		for(var i = 0, l = keys.length; i < l; ++i) {
-			s += keys[i] +' {' + FargoOutlinePrint[keys[i]].join(';') + '}';
+			s += keys[i] +' {' + FargoOutlinePrint.css[keys[i]].join(';') + '}';
 		}
 		s += '</style>';
 		return s;
@@ -27,19 +27,20 @@ var FargoOutlinePrint = {
 
 		// create a new window and laod the text
 		FargoOutlinePrint.window = window.open('http://example.com', '_blank', 'width=500,height=400,resizable=1');
-		var html = '<html><head><style>' + FargoOutlinePrint.css() + '</style></head>';
-		html += '<body>' + selectedNode.html() + '</body></html>'; 
+		var html = '<html><head><style>' + FargoOutlinePrint.generateCSS() + '</style></head>';
+		html += '<body>' + output + '</body></html>';
 		FargoOutlinePrint.window.document.write(html);
 	},
 	init: function() {
 		// load any html views
 		// laod the css
+		var $idFileMenu = $('#idFileMenu');
 		
 		// insert the print icon
-		$('#idFileMenu').find('.divider').eq(0).before('<li><a href="#" id="print-preview">Print Preview</a></li>');
+		$idFileMenu.find('.divider').eq(0).before('<li><a href="#" id="print-preview">Print Preview</a></li>');
 
 		// bind to the print icon
-		$('#idFileMenu').on('click', '#print-preview', function(e) {
+		$idFileMenu.on('click', '#print-preview', function(e) {
 			e.preventDefault();
 			FargoOutlinePrint.print();
 		});
