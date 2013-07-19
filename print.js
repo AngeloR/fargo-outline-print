@@ -1,9 +1,11 @@
 var FargoOutlinePrint = {
 	html: {},
 	css: {
+		'body > ol': [
+			'padding-left: 0'
+		],
 		'body > ol li': [
 			'list-style: none',
-			'padding-left: 0px',
 			'margin-bottom: 1.2em'
 		]
 	},
