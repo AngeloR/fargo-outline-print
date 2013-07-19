@@ -1,17 +1,14 @@
 var FargoOutlinePrint = {
 	html: {},
 	css: {
-		'body > ol': [
-			'padding-left: 0'
-		],
-		'body > ol li': [
-			'list-style: none',
-			'margin-bottom: 1.2em'
+		'pre': [
+			'width: 100%',
+			'white-space: pre-wrap'
 		]
 	},
-	parse: function(html) {
-
-		return html;
+	parse: function(text) {
+		text = '<pre>' + text + '</pre>';
+		return text;
 	},
 	generateCSS: function() {
 		var s = '<style>',
@@ -25,11 +22,10 @@ var FargoOutlinePrint = {
 	print: function() {
 		// get the selected node
 		var tab = getActiveTab();
-		var selectedNode = $('#' + tab.idOutlineContainer).find('.concord-cursor.selected');
 
-		var output = FargoOutlinePrint.parse(selectedNode.html());
+		var output = FargoOutlinePrint.parse(getOutlineText());
 
-		// create a new window and laod the text
+		// create a new window and load the text
 		FargoOutlinePrint.window = window.open('http://example.com', '_blank', 'width=500,height=400,resizable=1');
 		var html = '<html><head>' + FargoOutlinePrint.generateCSS();
 		html += '<title>'+ tab.title +'</title></head>';
@@ -38,14 +34,12 @@ var FargoOutlinePrint = {
 		FargoOutlinePrint.window.document.write(html);
 	},
 	init: function() {
-		// load any html views
-		// laod the css
 		var $idFileMenu = $('#idFileMenu');
 		
-		// insert the print icon
+		// insert the print link
 		$idFileMenu.find('.divider').eq(0).before('<li><a href="#" id="print-preview">Print Preview</a></li>');
 
-		// bind to the print icon
+		// bind to the print link
 		$idFileMenu.on('click', '#print-preview', function(e) {
 			e.preventDefault();
 			FargoOutlinePrint.print();
@@ -53,11 +47,11 @@ var FargoOutlinePrint = {
 
 		// load preset css info
 		FargoOutlinePrint.css.body = [
-			'overflow: auto',
-			'font-family: ' + appPrefs.outlineFont,
-			'font-size: ' + appPrefs.outlineFontSize + 'px',
-			'line-height: ' + appPrefs.outlineLineHeight + 'px'
+			'overflow: auto'
 		];
+		FargoOutlinePrint.css.pre.push('font-family: ' + appPrefs.outlineFont);
+		FargoOutlinePrint.css.pre.push('font-size: ' + appPrefs.outlineFontSize + 'px');
+		FargoOutlinePrint.css.pre.push('line-height: ' + appPrefs.outlineLineHeight + 'px');
 	}
 };
 
