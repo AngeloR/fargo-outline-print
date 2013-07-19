@@ -50,6 +50,13 @@ var FargoOutlinePrint = {
 			e.preventDefault();
 			FargoOutlinePrint.print();
 		});
+
+		// load preset css info
+		FargoOutlinePrint.css['body'] = [
+			'font-family: ' + appPrefs.outlineFont,
+			'font-size: ' + appPrefs.outlineFontSize + 'px',
+			'line-height: ' + appPRefs.outlineLineHeight + 'px'
+		];
 	}
 };
 
