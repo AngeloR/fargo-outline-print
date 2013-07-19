@@ -53,12 +53,11 @@ var FargoOutlinePrint = {
 
 		// load preset css info
 		FargoOutlinePrint.css.body = [
+			'overflow: auto',
 			'font-family: ' + appPrefs.outlineFont,
 			'font-size: ' + appPrefs.outlineFontSize + 'px',
 			'line-height: ' + appPrefs.outlineLineHeight + 'px'
 		];
-
-		console.log(FargoOutlinePrint.css);
 	}
 };
 
