@@ -21,13 +21,14 @@ var FargoOutlinePrint = {
 	print: function() {
 		// get the selected node
 		var tab = getActiveTab();
+		console.log(tab.title);
 		var selectedNode = $('#' + tab.idOutlineContainer).find('.concord-cursor.selected');
 
 		var output = FargoOutlinePrint.parse(selectedNode.html());
 
 		// create a new window and laod the text
 		FargoOutlinePrint.window = window.open('http://example.com', '_blank', 'width=500,height=400,resizable=1');
-		var html = '<html><head><style>' + FargoOutlinePrint.generateCSS() + '</style></head>';
+		var html = '<html><head>' + FargoOutlinePrint.generateCSS() + '</head>';
 		html += '<body>' + output + '</body></html>';
 		FargoOutlinePrint.window.document.title = tab.title;
 		FargoOutlinePrint.window.document.write(html);
